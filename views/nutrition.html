@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Track daily caloric intake, protein consumption, and hydration.">
+    <title>Nutrition - Fitness Hub</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Nutrition Tracker</h1>
+            <ul class="nav-links">
+                <li><a href="/">Dashboard</a></li>
+                <li><a href="/workouts">Workouts</a></li>
+                <li><a href="/nutrition">Nutrition</a></li>
+            </ul>
+            <button id="themeToggle">Toggle Theme</button>
+        </nav>
+    </header>
+
+    <main class="dashboard-grid">
+        <section class="card span-2">
+            <h2>Daily Summary</h2>
+            <div class="nutrition-summary-container">
+                
+                <div class="nutrition-card">
+                    <h3 class="margin-top-0">Calories Consumed</h3>
+                    <p class="metric-large">
+                        <span id="caloriesConsumedDisplay">0</span> <span class="metric-subtext">/ <span id="calGoalDisplay">0</span> kcal</span>
+                    </p>
+                    <div class="metric-flex">
+                        <span id="calPercentText" class="text-secondary">0%</span>
+                        <span id="caloriesLeftDisplay" class="text-muted">0 left</span>
+                    </div>
+                    <div class="progress-container progress-small">
+                        <div id="calProgressBar" class="progress-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div class="nutrition-card">
+                    <h3 class="margin-top-0">Protein</h3>
+                    <p class="metric-large">
+                        <span id="proteinTotalDisplay">0</span><span class="metric-subtext">g / <span id="proGoalDisplay">0</span> g</span>
+                    </p>
+                    <div class="metric-flex">
+                        <span id="proPercentText" class="text-secondary">0%</span>
+                    </div>
+                    <div class="progress-container progress-small">
+                        <div id="proProgressBar" class="progress-fill progress-pro-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div class="nutrition-card">
+                    <h3 class="margin-top-0">Water</h3>
+                    <p class="metric-large">
+                        <span id="waterTotalDisplay">0</span><span class="metric-subtext">oz / 128 oz</span>
+                    </p>
+                    <div class="metric-flex">
+                        <span id="waterPercentText" class="text-secondary">0%</span>
+                    </div>
+                    <div class="progress-container progress-small">
+                        <div id="waterProgressBar" class="progress-fill progress-water-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+            </div>
+            <p id="calorieWarning" class="warning-banner hidden">
+                ⚠️ You have reached or exceeded your calorie limit for the day!
+            </p>
+        </section>
+
+        <section class="card span-2">
+            <h2>Adjust Daily Goals</h2>
+            <form id="adjustGoalsForm">
+                <fieldset class="fieldset-flex">
+                    <div class="flex-1 min-w-200">
+                        <label for="customCalGoal">Calorie Goal (kcal):</label>
+                        <input type="number" id="customCalGoal" required>
+                    </div>
+                    <div class="flex-1 min-w-200">
+                        <label for="customProGoal">Protein Goal (g):</label>
+                        <input type="number" id="customProGoal" required>
+                    </div>
+                </fieldset>
+                <button type="submit" class="margin-top-10">Update Goals</button>
+            </form>
+        </section>
+
+        <section class="card">
+            <h2>Log Food</h2>
+            <form id="foodForm">
+                <fieldset>
+                    <legend>Add Meal/Snack</legend>
+                    <label for="foodName">Item Name:</label>
+                    <input type="text" id="foodName" required placeholder="e.g., Chicken Breast">
+
+                    <label for="foodCalories">Calories (kcal):</label>
+                    <input type="number" id="foodCalories" min="0" value="0" required>
+
+                    <label for="foodProtein">Protein (g):</label>
+                    <input type="number" id="foodProtein" min="0" value="0" required>
+                </fieldset>
+                <button type="submit">Log Food</button>
+            </form>
+        </section>
+
+        <section class="card">
+            <h2>Log Water</h2>
+            <form id="waterForm">
+                <fieldset>
+                    <legend>Hydration</legend>
+                    <label for="waterAmount">Amount (oz):</label>
+                    <input type="number" id="waterAmount" min="1" placeholder="e.g., 16" required>
+                </fieldset>
+                <button type="submit" class="btn-water">Log Water</button>
+            </form>
+        </section>
+
+        <section class="card span-2">
+            <h2>Today's Log</h2>
+            <ul class="workout-list" id="nutritionLogOutput">
+            </ul>
+        </section>
+    </main>
+    <script src="/js/main.js"></script>
+</body>
+</html>

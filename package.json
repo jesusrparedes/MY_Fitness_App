@@ -1,0 +1,17 @@
+{
+    "name": "fitness-app-refactored",
+    "version": "1.0.0",
+    "description": "CS 144 Project 1 Refactoring Section",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "cors": "^2.8.6",
+        "dotenv": "^17.4.2",
+        "express": "^4.22.1",
+        "express-rate-limit": "^8.3.2",
+        "helmet": "^8.1.0",
+        "mongoose": "^9.5.0"
+    }
+}

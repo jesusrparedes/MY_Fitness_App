@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal fitness and nutrition tracking application.">
+    <title>Fitness Hub</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Fitness Hub</h1>
+            <ul class="nav-links">
+                <li><a href="/">Dashboard</a></li>
+                <li><a href="/workouts">Workouts</a></li>
+                <li><a href="/nutrition">Nutrition</a></li>
+            </ul>
+            <button id="themeToggle">Toggle Theme</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="dashboard-grid">
+            <article class="card span-2">
+                <h2>Welcome to Your Dashboard</h2>
+                <p class="truncate-text">Track your progress, monitor your nutrition, and generate daily workouts based on the equipment you have available to hit your goals.</p>
+                <img src="/images/gym-hero.jpg" alt="Gym equipment layout optimized for fast loading" width="600" height="200" class="hero-image">
+            </article>
+
+            <article class="card">
+                <h2>Profile & Goals</h2>
+                <form id="profileForm">
+                    <fieldset>
+                        <legend>Current Metrics</legend>
+                        <label for="height">Height (inches):</label>
+                        <input type="number" id="height" name="height" value="68" min="20" max="100" required>
+                        
+                        <label for="weight">Weight (lbs):</label>
+                        <input type="number" id="weight" name="weight" value="190" min="50" max="500" required>
+                    </fieldset>
+                    
+                    <fieldset>
+                        <legend>Targets</legend>
+                        <label for="goalWeight">Goal Weight (lbs):</label>
+                        <input type="number" id="goalWeight" name="goalWeight" min="50" max="500">
+                        
+                        <label for="targetDate">Target Date:</label>
+                        <input type="date" id="targetDate" name="targetDate">
+
+                        <div class="pref-container">
+                            <label class="checkbox-label-special">
+                                <input type="checkbox" id="autoGenerateWorkout" class="auto-gen-checkbox">
+                                Auto-build a workout plan to hit this goal
+                            </label>
+                            
+                            <div id="prefDaysContainer" class="pref-days-container hidden">
+                                <p class="pref-days-title">Select preferred workout days:</p>
+                                <div class="checkbox-group margin-bottom-0">
+                                    <label><input type="checkbox" name="prefDays" value="Sunday"> Sun</label>
+                                    <label><input type="checkbox" name="prefDays" value="Monday"> Mon</label>
+                                    <label><input type="checkbox" name="prefDays" value="Tuesday"> Tue</label>
+                                    <label><input type="checkbox" name="prefDays" value="Wednesday"> Wed</label>
+                                    <label><input type="checkbox" name="prefDays" value="Thursday"> Thu</label>
+                                    <label><input type="checkbox" name="prefDays" value="Friday"> Fri</label>
+                                    <label><input type="checkbox" name="prefDays" value="Saturday"> Sat</label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <button type="submit">Save Profile & Calc Macros</button>
+                </form>
+                
+                <div id="macroResults"></div>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <p>Fitness Resources:</p>
+        <ul class="nested-list">
+            <li>External Links
+                <ul>
+                    <li><a href="https://exrx.net" target="_blank">ExRx Exercise Library</a></li>
+                    <li><a href="https://www.myfitnesspal.com" target="_blank">Calorie Data</a></li>
+                    <li><a href="https://stronglifts.com" target="_blank">Strength Standards</a></li>
+                </ul>
+            </li>
+        </ul>
+    </footer>
+    <script src="/js/main.js"></script>
+</body>
+</html>

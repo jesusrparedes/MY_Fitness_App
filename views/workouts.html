@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Workout generator and tracking log.">
+    <title>Workouts - Fitness Hub</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Workouts</h1>
+            <ul class="nav-links">
+                <li><a href="/">Dashboard</a></li>
+                <li><a href="/workouts">Workouts</a></li>
+                <li><a href="/nutrition">Nutrition</a></li>
+            </ul>
+            <button id="themeToggle">Toggle Theme</button>
+        </nav>
+    </header>
+
+    <main class="padding-2rem">
+        <div class="week-nav" id="weekNavContainer"></div>
+
+        <div class="dashboard-grid padding-0">
+            <section class="card">
+                <h2>Plan for <span id="displayActiveDay" class="inline-stat">Monday</span></h2>
+                
+                <div id="dailyPlanContainer" class="daily-plan-container"></div>
+
+                <hr class="solid-divider">
+
+                <h3>Add Specific Exercise to <span id="addActiveDayText">Monday</span></h3>
+                <form id="addExerciseForm" class="margin-bottom-30">
+                    <fieldset>
+                        <div class="flex-row">
+                            <div class="flex-2 min-w-150">
+                                <label for="customExName">Exercise Name:</label>
+                                <input type="text" id="customExName" required placeholder="e.g. Leg Extensions">
+                            </div>
+                            <div class="flex-1 min-w-80">
+                                <label for="customSets">Target Sets:</label>
+                                <input type="number" id="customSets" min="1" value="3" required>
+                            </div>
+                            <div class="flex-1 min-w-80">
+                                <label for="customReps">Target Reps/Mins:</label>
+                                <input type="number" id="customReps" min="1" value="8" required>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <button type="submit" class="btn-add">Add to Plan</button>
+                </form>
+
+                <hr class="solid-divider">
+
+                <h3>Generate Routine</h3>
+                <form id="generatorForm">
+                    <fieldset>
+                        <legend>Generator Settings</legend>
+                        
+                        <label class="block-label">Target Primary Group(s):</label>
+                        <div id="primaryMuscleGroup" class="checkbox-group">
+                            <label><input type="checkbox" name="primaryMuscle" value="chest" checked> Chest</label>
+                            <label><input type="checkbox" name="primaryMuscle" value="back"> Back</label>
+                            <label><input type="checkbox" name="primaryMuscle" value="legs"> Legs</label>
+                            <label><input type="checkbox" name="primaryMuscle" value="arms"> Arms</label>
+                            <label><input type="checkbox" name="primaryMuscle" value="cardio"> Cardio</label>
+                        </div>
+
+                        <div id="subMuscleContainer" class="checkbox-group margin-bottom-15"></div>
+
+                        <label for="gymLocation">Available Gym:</label>
+                        <select id="gymLocation">
+                            <option value="john_wooden">John Wooden Center (UCLA)</option>
+                            <option value="home">Home Gym (Dumbbells Only)</option>
+                        </select>
+
+                        <label class="block-label margin-top-15">Apply to Day(s):</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="targetDays" value="Sunday"> Sun</label>
+                            <label><input type="checkbox" name="targetDays" value="Monday"> Mon</label>
+                            <label><input type="checkbox" name="targetDays" value="Tuesday"> Tue</label>
+                            <label><input type="checkbox" name="targetDays" value="Wednesday"> Wed</label>
+                            <label><input type="checkbox" name="targetDays" value="Thursday"> Thu</label>
+                            <label><input type="checkbox" name="targetDays" value="Friday"> Fri</label>
+                            <label><input type="checkbox" name="targetDays" value="Saturday"> Sat</label>
+                        </div>
+
+                        <label class="block-label margin-top-15 border-top-padded">If Routine Already Exists:</label>
+                        <div class="checkbox-group margin-bottom-5">
+                            <label><input type="radio" name="conflictStrategy" value="merge" checked> Merge (Add new, overwrite duplicates)</label>
+                            <label><input type="radio" name="conflictStrategy" value="replace"> Replace Entirely (Wipe old plan)</label>
+                        </div>
+                        <p class="italic-subtext">(If no days are selected, it will apply to the currently viewed day).</p>
+                    </fieldset>
+                    <button type="submit">Generate Plan</button>
+                </form>
+            </section>
+
+            <section class="card span-2">
+                <h2>Log Set</h2>
+                <form id="logForm">
+                    <fieldset>
+                        <legend>Record Performance</legend>
+                        <label for="exerciseName">Select Exercise (From Today's Plan):</label>
+                        <select id="exerciseName" required></select>
+
+                        <div class="flex-row">
+                            <div class="flex-1 min-w-80">
+                                <label for="sets">Sets:</label>
+                                <input type="number" id="sets" min="1" value="1" required>
+                            </div>
+                            <div class="flex-1 min-w-80">
+                                <label for="reps">Reps / Mins:</label>
+                                <input type="number" id="reps" min="1" required>
+                            </div>
+                            <div class="flex-1 min-w-100">
+                                <label for="weightLifted">Weight / Level:</label>
+                                <input type="number" id="weightLifted" min="0" required>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <button type="submit">Log Set</button>
+                </form>
+
+                <h3 class="margin-top-30">Completed Logs</h3>
+                <ul class="workout-list" id="workoutLogOutput"></ul>
+            </section>
+        </div>
+    </main>
+    <script src="/js/main.js"></script>
+</body>
+</html>
