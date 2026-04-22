@@ -651,16 +651,18 @@ document.addEventListener('DOMContentLoaded', async () => {
             weekNavContainer.innerHTML = '';
             daysOfWeek.forEach(day => {
                 const btn = document.createElement('button');
+        
+                btn.type = 'button'; // This is the only new line you need
+        
                 btn.classList.add('day-btn');
                 if (day === activeDay) btn.classList.add('active');
                 btn.textContent = day.substring(0, 3);
-                
+        
                 btn.addEventListener('click', () => {
                     activeDay = day;
                     renderWeekNav(); 
                     updateWorkoutUI(); 
                 });
-                
                 weekNavContainer.appendChild(btn);
             });
         };
@@ -959,7 +961,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     appState.weeklyPlans[day] = {
                         muscle: jointTitle,
                         location: location === 'john_wooden' ? 'UCLA Gym' : 'Home',
-                        exercises: combinedExercises
+                        exercises: [...combinedExercises]
                     };
                     appState.weeklyLogs[day] = []; 
                 }
