@@ -105,7 +105,7 @@ app.post('/api/state', async (req, res) => {
     try {
         let state = await AppState.findOne();
         if (state) {
-            Object.assign(state, req.body);
+            state.set(req.body);
             state.markModified('userProfile');
             state.markModified('nutritionData');
             state.markModified('weeklyPlans');

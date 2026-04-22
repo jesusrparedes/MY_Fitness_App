@@ -555,8 +555,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('foodForm').addEventListener('submit', (e) => {
             e.preventDefault();
             const name = document.getElementById('foodName').value;
-            const cals = parseInt(document.getElementById('foodCalories').value);
-            const protein = parseInt(document.getElementById('foodProtein').value);
+            const cals = parseInt(document.getElementById('foodCalories').value) || 0;
+            const protein = parseInt(document.getElementById('foodProtein').value) || 0;
             
             addLogEntry(name, cals, protein, 0);
             e.target.reset(); 
@@ -972,7 +972,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             selectedDayCheckboxes.forEach(cb => cb.checked = false);
             selectedSubMuscleBoxes.forEach(cb => cb.checked = false);
             
+            if (targetDays.length > 0) activeDay = targetDays[0];
+            
             updateWorkoutUI();
+            renderWeekNav();
             alert(`Routine successfully applied to cloud for: ${targetDays.join(', ')}`);
         });
 
