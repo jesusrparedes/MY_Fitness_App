@@ -20,6 +20,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     let appState;
     try {
         const response = await fetch('/api/state');
+        if (!response.ok) {
+            console.error("Server error. Database might be blocked.");
+            return;
+        }
         appState = await response.json();
     } catch (error) {
         console.error("Could not connect to database. Check your server.", error);
